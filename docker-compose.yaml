@@ -2,14 +2,14 @@ version: "3"
 
 services:
   rsync-client:
-    image: xrovertox/archmirror-rsync
+    image: npastorale/archmirror-rsync-client
     pull_policy: always
     restart: unless-stopped
     volumes:
       - data:/data
 
   http-server:
-    build: http
+    image: npastorale/archmirror-http-server
     pull_policy: always
     restart: unless-stopped
     ports:
