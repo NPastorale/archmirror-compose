@@ -3,14 +3,12 @@ version: "3"
 services:
   rsync-client:
     image: npastorale/archmirror-rsync-client
-    pull_policy: always
     restart: unless-stopped
     volumes:
       - data:/data
 
   http-server:
     image: npastorale/archmirror-http-server
-    pull_policy: always
     restart: unless-stopped
     ports:
       - target: 80
