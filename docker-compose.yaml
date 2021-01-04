@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  rsync-client:
+    image: xrovertox/archmirror-rsync
+    pull_policy: always
+    restart: unless-stopped
+    volumes:
+      - data:/data
+
+  http-server:
+    build: http
+    pull_policy: always
+    restart: unless-stopped
+    ports:
+      - target: 80
+        published: 80
+        protocol: tcp
+    volumes:
+      - type: volume
+        source: data
+        target: /data
+        read_only: true
+
+volumes:
+  data:
